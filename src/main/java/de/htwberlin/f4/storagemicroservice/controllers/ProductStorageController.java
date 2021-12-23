@@ -1,6 +1,9 @@
 package de.htwberlin.f4.storagemicroservice.controllers;
 
+import java.util.NoSuchElementException;
 import java.util.UUID;
+
+import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +22,8 @@ public class ProductStorageController {
     @Autowired
     private StorageService service;
 
-    @GetMapping("/product/{UUID}")
-    public ResponseEntity<Storage> getStorage(@PathVariable UUID uuid){
+    @GetMapping("/product/{uuid}")
+    public ResponseEntity<Storage> getStorage(@PathVariable @NotNull UUID uuid){
         return ResponseEntity.ok(service.getStorgageProduct(uuid));
     }
     
