@@ -6,7 +6,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.Period;
 import java.util.UUID;
 
 @Data
@@ -24,8 +23,9 @@ public class Storage {
     private UUID id;
     @Column(name = "amount")
     private Integer amount;
-    @Column(name = "delivery_time", columnDefinition = "interval")
-    private Period deliveryTime;
+    //TODO change datatype to Period or Duration?
+    @Column(name = "delivery")
+    private Integer delivery;
     @Column(name = "place", columnDefinition = "TEXT")
     private String place;
 }
