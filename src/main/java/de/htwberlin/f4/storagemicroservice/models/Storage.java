@@ -27,8 +27,8 @@ public class Storage {
     @Column(name = "amount")
     private Integer amount;
     //TODO change datatype to Period or Duration?
-    @Column(name = "delivery")
-    private Integer delivery;
+    @Column(name = "duration")
+    private Integer duration;
     @Column(name = "place", columnDefinition = "TEXT")
     private String place;
 }
