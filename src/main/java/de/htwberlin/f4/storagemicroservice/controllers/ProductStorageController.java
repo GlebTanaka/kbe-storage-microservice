@@ -1,6 +1,5 @@
 package de.htwberlin.f4.storagemicroservice.controllers;
 
-import java.util.NoSuchElementException;
 import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
@@ -9,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,7 +22,7 @@ public class ProductStorageController {
 
     @GetMapping("/product/{uuid}")
     public ResponseEntity<Storage> getStorage(@PathVariable @NotNull UUID uuid){
-        return ResponseEntity.ok(service.getStorgageProduct(uuid));
+        return ResponseEntity.ok(service.getStorageProduct(uuid));
     }
     
     @GetMapping("/product/import")

@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
+/**
+ * Klasse als DAO fuer das Storage Objekt
+ */
 @Repository
 public interface StorageRepository extends JpaRepository<Storage, UUID> {
 }

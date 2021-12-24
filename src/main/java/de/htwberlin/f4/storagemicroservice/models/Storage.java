@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.UUID;
 
+/**
+ * Model der Entitaet Storage
+ */
 @Data
 @Builder
 @NoArgsConstructor
