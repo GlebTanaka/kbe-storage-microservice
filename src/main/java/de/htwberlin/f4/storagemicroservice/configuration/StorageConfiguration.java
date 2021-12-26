@@ -25,61 +25,61 @@ public class StorageConfiguration {
     CommandLineRunner commandLineRunner(StorageRepository storageRepository) {
         return args -> {
             Storage storage01 = new Storage(
-                    UUID.fromString("c0a8b22e-7de7-1e0d-817d-e7ee14600000"),
+                    UUID.fromString("c0a8b22e-7df7-1543-817d-f75549f30000"),
                     205,
                     1,
                     "Berlin"
             );
             Storage storage02 = new Storage(
-                    UUID.fromString("c0a8b22e-7de7-1e0d-817d-e7ee14710001"),
+                    UUID.fromString("c0a8b22e-7df7-1543-817d-f7554a030001"),
                     76,
                     5,
                     "Tokyo"
             );
             Storage storage03 = new Storage(
-                    UUID.fromString("c0a8b22e-7de7-1e0d-817d-e7ee14710002"),
+                    UUID.fromString("c0a8b22e-7df7-1543-817d-f7554a030002"),
                     98,
                     2,
                     "Wellington"
             );
             Storage storage04 = new Storage(
-                    UUID.fromString("c0a8b22e-7de7-1e0d-817d-e7ee14720003"),
+                    UUID.fromString("c0a8b22e-7df7-1543-817d-f7554a030003"),
                     46,
                     3,
                     "Rom"
             );
             Storage storage05 = new Storage(
-                    UUID.fromString("c0a8b22e-7de7-1e0d-817d-e7ee14720004"),
+                    UUID.fromString("c0a8b22e-7df7-1543-817d-f7554a030004"),
                     25,
                     7,
                     "Kapstadt"
             );
             Storage storage06 = new Storage(
-                    UUID.fromString("c0a8b22e-7de7-1e0d-817d-e7ee14720005"),
+                    UUID.fromString("c0a8b22e-7df7-1543-817d-f7554a030005"),
                     1,
                     100,
                     "New York"
             );
             Storage storage07 = new Storage(
-                    UUID.fromString("c0a8b22e-7de7-1e0d-817d-e7ee14720006"),
+                    UUID.fromString("c0a8b22e-7df7-1543-817d-f7554a040006"),
                     17,
                     9,
                     "Peking"
             );
             Storage storage08 = new Storage(
-                    UUID.fromString("c0a8b22e-7de7-1e0d-817d-e7ee14720007"),
+                    UUID.fromString("c0a8b22e-7df7-1543-817d-f7554a040007"),
                     523,
                     4,
                     "London"
             );
             Storage storage09 = new Storage(
-                    UUID.fromString("c0a8b22e-7de7-1e0d-817d-e7ee14720008"),
+                    UUID.fromString("c0a8b22e-7df7-1543-817d-f7554a040008"),
                     34,
                     14,
                     "Dublin"
             );
             Storage storage10 = new Storage(
-                    UUID.fromString("c0a8b22e-7de7-1e0d-817d-e7ee14730009"),
+                    UUID.fromString("c0a8b22e-7df7-1543-817d-f7554a040009"),
                     5,
                     21,
                     "Paris"

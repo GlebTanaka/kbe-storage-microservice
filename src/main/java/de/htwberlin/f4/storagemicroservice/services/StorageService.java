@@ -5,6 +5,7 @@ import de.htwberlin.f4.storagemicroservice.models.Storage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -22,6 +23,10 @@ public class StorageService {
     @Autowired
     public StorageService(StorageRepository storageRepository) {
         this.storageRepository = storageRepository;
+    }
+
+    public List<Storage> getStorageProducts() {
+        return storageRepository.findAll();
     }
 
     /**

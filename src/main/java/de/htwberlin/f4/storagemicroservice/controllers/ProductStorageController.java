@@ -1,5 +1,6 @@
 package de.htwberlin.f4.storagemicroservice.controllers;
 
+import java.util.List;
 import java.util.UUID;
 
 import javax.validation.constraints.NotNull;
@@ -19,6 +20,11 @@ import de.htwberlin.f4.storagemicroservice.services.StorageService;
 public class ProductStorageController {
     @Autowired
     private StorageService service;
+
+    @GetMapping
+    public ResponseEntity<List<Storage>> getAllStorageProducts() {
+        return ResponseEntity.ok(service.getStorageProducts());
+    }
 
     @GetMapping("/product/{uuid}")
     public ResponseEntity<Storage> getStorage(@PathVariable @NotNull UUID uuid){
