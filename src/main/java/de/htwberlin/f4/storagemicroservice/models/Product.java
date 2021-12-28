@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.UUID;
 
 @Data
@@ -21,7 +22,7 @@ public class Product {
 
     @Id
     @Column(name = "id", updatable = false)
-    private UUID id;
+    private String id;
     @Column(name = "name", nullable = false, columnDefinition = "TEXT")
     private String name;
     @Column(name = "description", nullable = false, columnDefinition = "TEXT")
@@ -43,7 +44,6 @@ public class Product {
     @Column(name = "formatted_address", nullable = false, columnDefinition = "TEXT")
     private String formattedAddress;
     @Column(name = "delivery_date", nullable = false)
-    private LocalDateTime deliveryDate;
-
+    private Date deliveryDate;
 
 }

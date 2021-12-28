@@ -48,11 +48,11 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-csv -->
+		<!-- https://mvnrepository.com/artifact/net.sf.supercsv/super-csv -->
 		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-csv</artifactId>
-			<version>1.9.0</version>
+			<groupId>net.sf.supercsv</groupId>
+			<artifactId>super-csv</artifactId>
+			<version>2.4.0</version>
 		</dependency>
 
 	</dependencies>
