@@ -6,8 +6,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.LocalDateTime;
-import java.util.Date;
+
+//import java.time.LocalDateTime;
+import java.sql.Date;
 import java.util.UUID;
 
 @Data
@@ -22,7 +23,7 @@ public class Product {
 
     @Id
     @Column(name = "id", updatable = false)
-    private String id;
+    private UUID id;
     @Column(name = "name", nullable = false, columnDefinition = "TEXT")
     private String name;
     @Column(name = "description", nullable = false, columnDefinition = "TEXT")
@@ -35,15 +36,17 @@ public class Product {
     private Double price;
     @Column(name = "weight", nullable = false)
     private Double weight;
-    @Column(name = "place", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "place", columnDefinition = "TEXT")
     private String place;
-    @Column(name = "amount", nullable = false)
+    @Column(name = "amount")
     private Integer amount;
-    @Column(name = "mehrwertsteuer", nullable = false)
+    @Column(name = "mehrwertsteuer")
     private Double mehrwertsteuer;
-    @Column(name = "formatted_address", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "formatted_address", columnDefinition = "TEXT")
     private String formattedAddress;
-    @Column(name = "delivery_date", nullable = false)
+    @Column(name = "delivery_date")
     private Date deliveryDate;
+    @Column(name = "delivery_time")
+    private Integer deliveryTime;
 
 }

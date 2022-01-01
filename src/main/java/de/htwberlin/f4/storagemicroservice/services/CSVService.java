@@ -1,61 +1,19 @@
-package de.htwberlin.f4.storagemicroservice.controllers;
+package de.htwberlin.f4.storagemicroservice.services;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
-import java.util.UUID;
-import javax.validation.constraints.NotNull;
+
+import com.opencsv.bean.CsvToBeanBuilder;
+
+import org.springframework.stereotype.Service;
+
 import de.htwberlin.f4.storagemicroservice.models.Product;
-import de.htwberlin.f4.storagemicroservice.services.CSVService;
-import de.htwberlin.f4.storagemicroservice.services.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import de.htwberlin.f4.storagemicroservice.models.Storage;
-import de.htwberlin.f4.storagemicroservice.services.StorageService;
 
-@RestController
-@RequestMapping("api/v1/storage")
-public class ProductStorageController {
-    @Autowired
-    private StorageService service;
-    @Autowired
-    private ProductService productService;
-    @Autowired 
-    private CSVService csvService;
-
-    @GetMapping
-    public ResponseEntity<List<Storage>> getAllStorageProducts() {
-        return ResponseEntity.ok(service.getStorageProducts());
-    }
-
-    @GetMapping("/product/{uuid}")
-    public ResponseEntity<Storage> getStorage(@PathVariable @NotNull UUID uuid) {
-        return ResponseEntity.ok(service.getStorageProduct(uuid));
-    }
-
-    @GetMapping("/product/import")
-    public void importCSV() {
-       /* final String uri = "http://localhost:8080/api/v1/product/export";
-        RestTemplate restTemplate = new RestTemplate();
-        String productCsv = restTemplate.getForObject(uri, String.class);
-        try (FileWriter fw = new FileWriter("target/classes/Product.csv");
-             BufferedWriter bw = new BufferedWriter(fw)) {
-            if (productCsv != null) {
-                bw.write(productCsv);
-            }
-            bw.flush();
-        } catch (IOException e) {
-            System.err.println("File couldn't be written: " + e);
-        }
-        String csvFileName = "target/classes/Product.csv";*/
-        List<Product> products = csvService.readCSVFile();
-        productService.addNewProducts(products);
-    }
-
-    /*public void readCSVFile(String csvFileName) {
-        ICsvBeanReader beanReader = null;
+@Service
+public class CSVService {
+    public List<Product> readCSVFile() {
+        /*ICsvBeanReader beanReader = null;
         CellProcessor[] processors = new CellProcessor[]{
                 // change Type to UUID? Curretnly String
                 new org.supercsv.cellprocessor.constraint.NotNull(), // ID
@@ -107,7 +65,16 @@ public class ProductStorageController {
                 } catch (IOException e) {
                     System.err.println("Error closing the reader: " + e);
                 }
-            }
+            }*/
+            try {
+                FileReader reader = new FileReader("products.csv");
+                List<Product> products = new CsvToBeanBuilder<Product>(reader).withType(Product.class).build().parse();
+                reader.close();
+                return products;
+            } catch (IllegalStateException | IOException e) {
+                e.printStackTrace();
+                return null;
+            } 
         }
-    }*/
+    
 }
