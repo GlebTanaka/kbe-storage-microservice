@@ -18,13 +18,11 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public void addNewProduct(Product product) {
-        //TODO check for null and existing UUID
+    private void addNewProduct(Product product) {
         productRepository.save(product);
     }
 
     public void addNewProducts(List<Product> product) {
-        //TODO check for null and existing UUID
         product.forEach(p -> addNewProduct(p));
     }
 }
