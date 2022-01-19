@@ -12,9 +12,6 @@ import javax.validation.constraints.Positive;
 
 import java.util.UUID;
 
-/**
- * Model der Entitaet Storage
- */
 @Data
 @Builder
 @NoArgsConstructor
@@ -33,7 +30,6 @@ public class Storage {
     @NotNull
     @Positive
     private Integer amount;
-    //TODO change datatype to Period or Duration?
     @Positive
     @NotNull
     @Column(name = "duration")

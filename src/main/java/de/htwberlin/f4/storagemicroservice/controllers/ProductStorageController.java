@@ -25,7 +25,7 @@ import de.htwberlin.f4.storagemicroservice.services.StorageService;
 @RequestMapping("api/v1/storage")
 public class ProductStorageController {
     @Autowired
-    private StorageService service;
+    private StorageService storageService;
     @Autowired
     private ProductService productService;
     @Autowired 
@@ -33,17 +33,17 @@ public class ProductStorageController {
 
     @GetMapping
     public ResponseEntity<List<Storage>> getAllStorageProducts() {
-        return ResponseEntity.ok(service.getStorageProducts());
+        return ResponseEntity.ok(storageService.getStorageProducts());
     }
 
     @GetMapping("/product/{uuid}")
     public ResponseEntity<Storage> getStorageProduct(@PathVariable @NotNull UUID uuid) {
-        return ResponseEntity.ok(service.getStorageProduct(uuid));
+        return ResponseEntity.ok(storageService.getStorageProduct(uuid));
     }
 
     @PostMapping("/product")
     public void postStorageProduct(@RequestBody @Valid Storage product){
-        service.addNewProduct(product);
+        storageService.addNewProduct(product);
     }
 
     @GetMapping("/product/import")

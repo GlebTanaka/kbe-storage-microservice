@@ -11,18 +11,11 @@ import java.util.UUID;
 
 import javax.persistence.EntityExistsException;
 
-/**
- * Service fuer den Zugriff auf das DAO
- */
 @Service
 public class StorageService {
 
     private final StorageRepository storageRepository;
 
-    /**
-     * Konstruktor mit Parametern
-     * @param storageRepository StorageRepository das DAO
-     */
     @Autowired
     public StorageService(StorageRepository storageRepository) {
         this.storageRepository = storageRepository;
@@ -33,8 +26,7 @@ public class StorageService {
     }
 
     /**
-     * Fügt Storage Product in die Datenbank ein
-     * @param product
+     * Add Product to database
      */
     public void addNewProduct(Storage product) throws EntityExistsException{
         if(productExists(product)){
@@ -52,11 +44,6 @@ public class StorageService {
         }
     }
 
-    /**
-     * Methode um ein spezifisches Storage Objekt zu bekommen
-     * @param uuid UUID Suchparameter
-     * @return Storage, das erfragte Objekt
-     */
     public Storage getStorageProduct(UUID uuid) throws NoSuchElementException {
         return storageRepository.findById(uuid).orElseThrow();
     }
