@@ -6,9 +6,11 @@ import java.util.UUID;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+
 import de.htwberlin.f4.storagemicroservice.models.Product;
 import de.htwberlin.f4.storagemicroservice.services.CSVService;
 import de.htwberlin.f4.storagemicroservice.services.ProductService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import de.htwberlin.f4.storagemicroservice.models.Storage;
 import de.htwberlin.f4.storagemicroservice.services.StorageService;
+
 @Validated
 @RestController
 @RequestMapping("api/v1/storage")
@@ -28,7 +31,7 @@ public class ProductStorageController {
     private StorageService storageService;
     @Autowired
     private ProductService productService;
-    @Autowired 
+    @Autowired
     private CSVService csvService;
 
     @GetMapping
@@ -37,16 +40,23 @@ public class ProductStorageController {
     }
 
     @GetMapping("/product/{uuid}")
+    @ApiOperation(value = "Get Product Information",
+            notes = "Provide a matching UUID to retrieve additional Information of the Product",
+            response = Storage.class)
     public ResponseEntity<Storage> getStorageProduct(@PathVariable @NotNull UUID uuid) {
         return ResponseEntity.ok(storageService.getStorageProduct(uuid));
     }
 
     @PostMapping("/product")
-    public void postStorageProduct(@RequestBody @Valid Storage product){
+    @ApiOperation(value = "Store Product Details",
+            notes = "Provide additional Information of the Product, including matching UUID")
+    public void postStorageProduct(@RequestBody @Valid Storage product) {
         storageService.addNewProduct(product);
     }
 
     @GetMapping("/product/import")
+    @ApiOperation(value = "Read Data from CSV",
+            notes = "Store all avalibale data from Products and store them in separate DB")
     public void importCSV() throws IOException {
         List<Product> products = csvService.readCSVFile();
         productService.addNewProducts(products);

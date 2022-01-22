@@ -1,5 +1,6 @@
 package de.htwberlin.f4.storagemicroservice.models;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -25,6 +26,7 @@ public class Storage {
     @Id
     @Column(name = "id")
     @NotNull
+    @ApiModelProperty(notes = "ID must be provided from client site")
     private UUID id;
     @Column(name = "amount")
     @NotNull
