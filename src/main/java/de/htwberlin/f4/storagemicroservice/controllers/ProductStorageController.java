@@ -12,6 +12,7 @@ import de.htwberlin.f4.storagemicroservice.services.CSVService;
 import de.htwberlin.f4.storagemicroservice.services.ProductService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -49,9 +50,11 @@ public class ProductStorageController {
 
     @PostMapping("/product")
     @ApiOperation(value = "Store Product Details",
-            notes = "Provide additional Information of the Product, including matching UUID")
-    public void postStorageProduct(@RequestBody @Valid Storage product) {
+            notes = "Provide additional Information of the Product, including matching UUID",
+            response = Storage.class)
+    public ResponseEntity<Storage> postStorageProduct(@RequestBody @Valid Storage product) {
         storageService.addNewProduct(product);
+        return new ResponseEntity<Storage>(product, HttpStatus.CREATED);
     }
 
     @GetMapping("/product/import")
