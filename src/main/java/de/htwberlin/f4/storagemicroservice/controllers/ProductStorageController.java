@@ -28,12 +28,17 @@ import de.htwberlin.f4.storagemicroservice.services.StorageService;
 @RestController
 @RequestMapping("api/v1/storage")
 public class ProductStorageController {
+
+    private final StorageService storageService;
+    private final ProductService productService;
+    private final CSVService csvService;
+
     @Autowired
-    private StorageService storageService;
-    @Autowired
-    private ProductService productService;
-    @Autowired
-    private CSVService csvService;
+    public ProductStorageController(StorageService storageService, ProductService productService, CSVService csvService) {
+        this.storageService = storageService;
+        this.productService = productService;
+        this.csvService = csvService;
+    }
 
     @GetMapping
     public ResponseEntity<List<Storage>> getAllStorageProducts() {

@@ -23,6 +23,6 @@ public class ProductService {
     }
 
     public void addNewProducts(List<Product> product) {
-        product.forEach(p -> addNewProduct(p));
+        product.forEach(this::addNewProduct);
     }
 }

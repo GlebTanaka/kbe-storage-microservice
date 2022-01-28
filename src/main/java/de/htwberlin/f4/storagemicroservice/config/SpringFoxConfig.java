@@ -38,7 +38,6 @@ public class SpringFoxConfig {
                         "gleb5655@gmail.com"),
                 "API License",
                 "https://github.com/GlebTanaka/kbe-storage-microservice",
-                Collections.emptyList()
-        );
+                Collections.emptyList());
     }
 }

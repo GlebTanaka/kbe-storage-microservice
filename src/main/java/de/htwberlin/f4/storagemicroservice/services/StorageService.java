@@ -25,21 +25,18 @@ public class StorageService {
         return storageRepository.findAll();
     }
 
-    /**
-     * Add Product to database
-     */
-    public void addNewProduct(Storage product) throws EntityExistsException{
-        if(productExists(product)){
-            throw new EntityExistsException("Entity with UUID: " + product.getId().toString() +" already Exists");
+    public void addNewProduct(Storage product) throws EntityExistsException {
+        if (productExists(product)) {
+            throw new EntityExistsException("Entity with UUID: " + product.getId().toString() + " already Exists");
         }
         storageRepository.save(product);
     }
 
-    private boolean productExists(Storage product){
-        try{
+    private boolean productExists(Storage product) {
+        try {
             getStorageProduct(product.getId());
             return true;
-        }catch(NoSuchElementException e){
+        } catch (NoSuchElementException e) {
             return false;
         }
     }
